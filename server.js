@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql2');
+const mysql = require('mysql');
 const inquirer = require('inquirer');
 
 
@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   host: 'localhost',
   port: 3001,
   user: 'root',
-  password: 'your password',
+  password: 'Palebloodhunter14!',
   database: 'workplace_data'
 });
 
@@ -17,26 +17,50 @@ connection.connect(err => {
   prompt();
 });
 
-function useTracker(){
+function prompt(){
   inquirer
-   .prompt({
-     type: "list",
-     choice: [
-       "Add Employee",
-       "Add Role",
-       "add Department",
-       "Show Employees",
-       "Show Roles",
-       "Show Departments",
-       "Update Exiting Employee",
-       "Remove Existing Employee",
-       "Quit Tracker",
-     ]
-   }).then(function(){
-     switch ()
-   }
-   })
+  .prompt({
+    name: "selection",
+    type: "list",
+    message: "Where would you like to start?",
+    choice: [
+      "Add Employee",
+      "Add Role",
+      "add Department",
+      "Show Employees",
+      "Show Roles",
+      "Show Departments",
+      "Update Exiting Employee",
+      "Remove Existing Employee",
+      "Quit Prompt",
+    ]
+
+  }).then(function(response){
+    switch (response.selection){
+    case "Add Employee":
+        addEmployee();
+        break;
+    case "View Roles":
+      viewRoles();
+      break;
+    case "View departments":
+      viewDepartments();
+      break;
+    case "View Employees":
+      viewEmployees();
+      break;
+    case "Add Department":
+      addDepartment();
+      break;
+    case "add Role":
+      viewRoles();
+      break;
+    }
+  })  
 };
+
+
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -53,3 +77,5 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+

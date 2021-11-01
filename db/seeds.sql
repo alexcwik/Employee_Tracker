@@ -14,7 +14,7 @@ VALUES
 ('Salesperson', 65000, 001)
 ('Lead Engineer', 100000, 002)
 ('Software Engineer', 88000, 002)
-('Accountant',70000, 003)
+('Accountant', 70000, 003)
 ('Legal Team Lead', 98000, 004)
 ('Lawyer', 180000, 004)
 
